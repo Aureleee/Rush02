@@ -5,46 +5,110 @@
 #include <unistd.h>
 #include <stdio.h> 
 #include <stdlib.h>
+#include "so_anyway_i_started_blasting.h"
 
-int    ft_strlen(char *str);
-char	*ft_strncpy(char *dest, char *src, unsigned int n);
-void	ft_parse_integer(char *str, int *array, int *index);
-int	ft_atoi(char *str);
 
-char *ft_create_array_char(unsigned int size)
+int    *ft_ultimate_parsing(char *number, int size_of_number)
 {
-    char *arr;
-    arr = (char *)malloc((size)*sizeof(char));
-    if (arr == NULL)
-        return (0);
-    return (arr);
-}
-int *ft_create_array_int(unsigned int size)
-{
-    int *arr;
-    arr = (int *)malloc((size)*sizeof(int));
-    if (arr == NULL)
-        return (0);
-    return (arr);
-}
-
-
-
-void    ft_parse_long_integer(char *str, int *array, int size)
-{   
     int index;
-    char *cpy_str;
 
-    index = 0;
-    while (index < size)
-        {
-            cpy_str=ft_create_array_char(11); 
-            cpy_str = ft_strncpy(cpy_str,str,10);   // create a buffer of size 10, copy the slice
-            ft_parse_integer(cpy_str,array,&index); // of str and parse it into array
+    int size; // Size of the INT 
+    int *utimate_arr; //array tht will stack the int 
+    size = ft_size_of_tab(number); // THIs set up the size of ULTIMATE array (see with me for understanding it)
+    utimate_arr = ft_create_array_int(size); // create is 
+
+
+
+
+    char *tempo_array; // this array is used to copy (using strncpy with n = 9) the first, 
+    //then second,,, 9char of the original number (number) then after using   
+    tempo_array = ft_create_array_char(9);
+
+    index = 0; //index wille travel along number (it will be our stop condition)
+    while (size_of_number > 0)
+    {
+        
+        if (size_of_number > 9)
+        {   
+            write(1, "le char en input est : ",23);
+            ft_putstr(number);
+
+
+
+            ft_rev_int_tab(number, size_of_number);
+            write(1, "le char reversed en input est : ",32);
+            ft_putstr(number);
+
+        
+            write(1, "la copy est : ",14);
+
+            tempo_array= ft_strncpy(tempo_array,number,9);
+            ft_putstr(tempo_array);
+
+            
+            write(1, "la copy reversed est : ",23);
+            ft_rev_int_tab(tempo_array, 9);
+            ft_putstr(tempo_array);
+
+
+            ft_atoi(tempo_array);
+            ft_parse_integer(tempo_array, utimate_arr,&index);//transform the char of size = 9  into a int
+            // and then embed the int in the ultimate array
+            // ---- THIS FUNCTION INCREMENT INDEX ---- (or at least is supposed to.. XD) 
+            //ft_putnbr_array(utimate_arr, size); //shows whats inside of utimate
+            write(1, "content of the ultimate array :\n",32);
+            ft_putnbr_array(utimate_arr,size);
+
+
+
+            //ft_rev_int_tab(number, size_of_number);
+
+            number+=9;
+            size_of_number-=9;
+            ft_rev_int_tab(number, size_of_number);
+
+            write(1, "le char en output est : ",24); // ATTENTION  J'AVANCE LE POINTEUR
+            ft_putstr(number);
+
+            printf("l'index de ultime est a : %d\n",index);
         }
+        else 
+        {
+             write(1, "le final char en input est : ",29);
+            ft_putstr(number);
 
 
+            ft_atoi(number);
+            ft_parse_integer(number, utimate_arr,&index);//transform the char of size = 9  into a int
+            // and then embed the int in the ultimate array
+            // ---- THIS FUNCTION INCREMENT INDEX ---- (or at least is supposed to.. XD) 
+            //ft_putnbr_array(utimate_arr, size); //shows whats inside of utimate
+            write(1, "content of the ultimate array :\n",32);
+            ft_putnbr_array(utimate_arr,size);
+
+
+
+            //ft_rev_int_tab(number, size_of_number);
+
+            number+=size_of_number; // useless but set the poineur to the edd
+            size_of_number=0;  //we are finished  !!! :)
+            write(1, "le char en output est : ",24); // ATTENTION  J'AVANCE LE POINTEUR
+            ft_putstr(number);
+            write(1, "\n ... bas vide ducoup haha\n",27);
+            printf("l'index de ultime est a : %d\n",index);
+        }
+    }
+
+    printf("\n\n\n----------THE END----------\n\n\n");
+
+    return (utimate_arr);
 }
+
+
+
+
+
+
 
 
 
@@ -63,6 +127,7 @@ void	ft_parse_integer(char *str, int *array, int *index)
         (*index)++;
 	}
     array[*index] = nbr % 1000;
+    (*index)++;
 }
 
 
@@ -81,62 +146,6 @@ int    ft_size_of_tab(char *str)
     printf("size du tab est : %d \n",size);
 
     return (size);
-}
-
-
-
-// PRACTICAL FUNCTION
-int	ft_atoi(char *str)
-{
-	int	value;
-
-	value = 0;
-	while (*str > 47 && *str < 58)
-	{
-		value = value * 10 + *str - '0';
-		str++;
-	}
-	return (value);
-}
-
-int    ft_strlen(char *str)
-{
-    int length;
-
-    length = 0;
-    while(*str)
-    {
-        str++;
-        length++;
-    }
-return (length);
-}
-
-
-
-
-
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	i;
-	char			*address_dest;
-
-	address_dest = dest;
-	i = 0;
-	while (*src && i < n)
-	{
-		*dest = *src;
-		src++;
-		i++;
-		dest++;
-	}
-	while (i < n)
-	{
-		*dest = '\0';
-		dest++;
-		i++;
-	}
-	return (address_dest);
 }
 
 
