@@ -51,7 +51,6 @@ int    *ft_ultimate_parsing(char *number, int size_of_number)
             ft_putstr(tempo_array);
 
 
-            ft_atoi(tempo_array);
             ft_parse_integer(tempo_array, utimate_arr,&index);//transform the char of size = 9  into a int
             // and then embed the int in the ultimate array
             // ---- THIS FUNCTION INCREMENT INDEX ---- (or at least is supposed to.. XD) 
@@ -78,7 +77,6 @@ int    *ft_ultimate_parsing(char *number, int size_of_number)
             ft_putstr(number);
 
 
-            ft_atoi(number);
             ft_parse_integer(number, utimate_arr,&index);//transform the char of size = 9  into a int
             // and then embed the int in the ultimate array
             // ---- THIS FUNCTION INCREMENT INDEX ---- (or at least is supposed to.. XD) 
@@ -94,10 +92,12 @@ int    *ft_ultimate_parsing(char *number, int size_of_number)
             size_of_number=0;  //we are finished  !!! :)
             write(1, "le char en output est : ",24); // ATTENTION  J'AVANCE LE POINTEUR
             ft_putstr(number);
-            write(1, "\n ... bas vide ducoup haha\n",27);
+            write(1, "\n ... bas vide ducoup haha\n\n",28);
             printf("l'index de ultime est a : %d\n",index);
         }
     }
+    
+    free(tempo_array);
 
     printf("\n\n\n----------THE END----------\n\n\n");
 

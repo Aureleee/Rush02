@@ -2,6 +2,7 @@
     "files.associations": {
         "unistd.h": "c",
         "stdlib.h": "c",
-        "so_anyway_i_started_blasting.h": "c"
+        "so_anyway_i_started_blasting.h": "c",
+        "stdio.h": "c"
     }
 }
