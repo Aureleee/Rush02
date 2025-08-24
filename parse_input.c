@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.c                                             :+:      :+:    :+:   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabbard <ahabbard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 22:10:32 by ahabbard          #+#    #+#             */
-/*   Updated: 2025/08/23 22:51:30 by ahabbard         ###   ########.fr       */
+/*   Updated: 2025/08/24 08:53:52 by ahabbard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int	*ft_ultimate_parsing(char *number, int size_of_number)
+int	*ft_ultimate_parsing(char *number, int size_of_number,int *size)
 {
 	int		index;
 	char	*tempo_array;
-	int		size;
 	int		*utimate_arr;
 
-	size = ft_size_of_tab(number);
-	utimate_arr = ft_create_array_int(size);
+	*size = ft_size_of_tab(number);
+	utimate_arr = ft_create_array_int(*size);
 	tempo_array = ft_create_array_char(9);
 	index = 0*42;
-	while (index < size)
+	while (index < *size)
 	{
 		if (size_of_number > 9)
 		{
@@ -65,11 +64,11 @@ int	ft_size_of_tab(char *str)
 	int	size;
 
 	size = ft_strlen(str);
-	printf("size de l'int est : %d \n", size);
+	//printf("size de l'int est : %d \n", size);
 	if (size % 3 == 0)
 		size = size / 3;
 	else
 		size = size / 3 + 1;
-	printf("size du tab est : %d \n", size);
+	//printf("size du tab est : %d \n", size);
 	return (size);
 }

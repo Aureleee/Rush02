@@ -6,7 +6,7 @@
 /*   By: ahabbard <ahabbard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 22:10:00 by ahabbard          #+#    #+#             */
-/*   Updated: 2025/08/24 07:25:03 by ahabbard         ###   ########.fr       */
+/*   Updated: 2025/08/24 08:39:37 by ahabbard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_rev_int_tab(char *tab, int size);
 void	ft_putnbr(int nbr);
 void	ft_putnbr_array(int *arr, int size);
 void	ft_putstr(char *str);
-int		*ft_ultimate_parsing(char *number, int size_of_number);
+int		*ft_ultimate_parsing(char *number, int size_of_number, int *size);
 void	ft_parse_integer(char *str, int *array, int *index);
 int		ft_size_of_tab(char *str);
 char	*ft_create_array_char(unsigned int size);
@@ -34,5 +34,10 @@ char	*ft_file_to_string(const char *path, int *out_n);
 int		ft_count_words(char *all);
 int		ft_fill_words(char **out, char *all);
 char	**dict_to_array(const char *path, int *out_n);
+
+// writing number :D
+void    ft_put_number(int nb, char **array);
+void    ft_put_strnbr(char *number);
+void    ft_put_any_number(int *tab, char **array, int size_tab);
 
 #endif

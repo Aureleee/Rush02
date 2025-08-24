@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting_dict.c                                     :+:      :+:    :+:   */
+/*   parse_dict.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabbard <ahabbard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 22:29:07 by ahabbard          #+#    #+#             */
-/*   Updated: 2025/08/24 07:27:58 by ahabbard         ###   ########.fr       */
+/*   Updated: 2025/08/24 08:34:59 by ahabbard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_file_to_string(const char *path, int *out_n)
 	close(fd);
 	all[n] = '\0';
 	*out_n = n;
-	return (all);
+	return (all); 
 }
 
 int	ft_count_words(char *all)
